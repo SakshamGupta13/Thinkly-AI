@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <div className="main">
       <div className="nav">
-        <a href="https://thinkly-ai.onrender.com/"><img src="/src/assets/ai.png" alt="" className='logo'/></a>
+        <a href="https://thinkly-ai.onrender.com/"><img src={assets.ai_icon} alt="" className='logo'/></a>
         <p className='thinkly'>Thinkly AI</p>
         <img src={assets.user_icon} alt="" />
       </div>
