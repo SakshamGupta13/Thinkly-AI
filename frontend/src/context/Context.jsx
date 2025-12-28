@@ -12,26 +12,21 @@ const ContextProvider = ({ children }) => {
   const [resultData, setResultData] = useState("");
 
   const onSent = async () => {
-    if (!input.trim()) return;
 
-    try {
-      setLoading(true);
-      setShowResult(true);
-      setRecentPrompt(input);
-      setPrevPrompt((prev) => [...prev, input]);
+    setResultData("");
+    setLoading(true);
+    setShowResult(true);
+    setRecentPrompt(input);
+    setPrevPrompt((prev) => [...prev, input]);
 
-      const reply = await sendGroqPrompt(input);
+    const reply = await sendGroqPrompt(input);
 
-      setResultData(reply);
-      console.log("AI Reply:", reply);
+    setResultData(reply);
+    console.log("AI Reply:", reply);
 
-      setInput("");
-    } catch (error) {
-      console.error(error);
-      setResultData("Error fetching response");
-    } finally {
-      setLoading(false);
-    }
+    setInput("");
+    setLoading(false);
+  
   };
 
   const contextValue = {
@@ -55,6 +50,74 @@ const ContextProvider = ({ children }) => {
 };
 
 export default ContextProvider;
+
+
+
+
+
+
+
+
+
+  // // SAME CODE BUT WITH TRY AND CATCH BLOCK  // //
+
+// import { createContext, useState } from "react";
+// import sendGroqPrompt from "../config/groq";
+
+// export const Context = createContext(null);
+
+// const ContextProvider = ({ children }) => {
+//   const [input, setInput] = useState("");
+//   const [recentPrompt, setRecentPrompt] = useState("");
+//   const [prevPrompt, setPrevPrompt] = useState([]);
+//   const [showResult, setShowResult] = useState(false);
+//   const [loading, setLoading] = useState(false);
+//   const [resultData, setResultData] = useState("");
+
+//   const onSent = async () => {
+//     if (!input.trim()) return;
+
+//     try {
+//       setLoading(true);
+//       setShowResult(true);
+//       setRecentPrompt(input);
+//       setPrevPrompt((prev) => [...prev, input]);
+
+//       const reply = await sendGroqPrompt(input);
+
+//       setResultData(reply);
+//       console.log("AI Reply:", reply);
+
+//       setInput("");
+//     } catch (error) {
+//       console.error(error);
+//       setResultData("Error fetching response");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const contextValue = {
+//     input,
+//     setInput,
+//     recentPrompt,
+//     setRecentPrompt,
+//     prevPrompt,
+//     setPrevPrompt,
+//     showResult,
+//     loading,
+//     resultData,
+//     onSent,
+//   };
+
+//   return (
+//     <Context.Provider value={contextValue}>
+//       {children}
+//     </Context.Provider>
+//   );
+// };
+
+// export default ContextProvider;
 
 
 
