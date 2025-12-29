@@ -4,6 +4,7 @@ import { assets } from '../../assets/assets'
 import { Context } from '../../context/Context'
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Sidebar from '../Sidebar/Sidebar';
 
 const Main = () => {
 
@@ -27,19 +28,19 @@ const Main = () => {
           </div>
 
           <div className="cards">
-            <div className="card">
+            <div  onClick={() => onSent("Suggest beautiful places to see on an upcoming road trip")} className="card card1">
               <p>Suggest beautiful places to see on an upcoming road trip</p>
               <img src={assets.compass_icon} alt="" />
             </div>
-            <div className="card">
+            <div onClick={() => onSent('Briefly summarize this concept: urban planning')} className="card card2">
               <p>Briefly summarize this concept: urban planning</p>
               <img src={assets.bulb_icon} alt="" />
             </div>
-            <div className="card">
+            <div onClick={() => onSent("Brainstorn team bonding activities for our work retreat")} className="card card3">
               <p>Brainstorn team bonding activities for our work retreat</p>
               <img src={assets.message_icon} alt="" />
             </div>
-            <div className="card">
+            <div onClick={() => onSent('Vocabulary of the day')} className="card card4">
               <p>Improve the readibility of the following code</p>
               <img src={assets.code_icon} alt="" />
             </div>
@@ -89,7 +90,7 @@ const Main = () => {
         <div className="main-bottom">
           <div className="search-box">
             <input type="text"
-              placeholder="Enter a prompt here."
+              placeholder="Enter a prompt here.."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && onSent()}

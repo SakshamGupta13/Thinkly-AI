@@ -11,18 +11,30 @@ const ContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
 
-  const onSent = async () => {
+
+  const newChat = () => {
+    setLoading(false);
+    setShowResult(false);
+  }
+
+  const onSent = async (prompt) => {
 
     setResultData("");
     setLoading(true);
     setShowResult(true);
-    setRecentPrompt(input);
-    setPrevPrompt((prev) => [...prev, input]);
+    let response;
+    if(prompt != undefined){
+      response = await sendGroqPrompt(prompt);
+      setRecentPrompt(prompt);
+    }else{
+      setPrevPrompt((prev) => [...prev, input]);
+      setRecentPrompt(input);
+      response = await sendGroqPrompt(input);
+    }
 
-    const reply = await sendGroqPrompt(input);
 
-    setResultData(reply);
-    console.log("AI Reply:", reply);
+    setResultData(response);
+    console.log("AI response:", response);
 
     setInput("");
     setLoading(false);
@@ -40,6 +52,7 @@ const ContextProvider = ({ children }) => {
     loading,
     resultData,
     onSent,
+    newChat
   };
 
   return (
@@ -83,10 +96,10 @@ export default ContextProvider;
 //       setRecentPrompt(input);
 //       setPrevPrompt((prev) => [...prev, input]);
 
-//       const reply = await sendGroqPrompt(input);
+//       const response = await sendGroqPrompt(input);
 
-//       setResultData(reply);
-//       console.log("AI Reply:", reply);
+//       setResultData(response);
+//       console.log("AI response:", response);
 
 //       setInput("");
 //     } catch (error) {
@@ -161,8 +174,8 @@ export default ContextProvider;
 //       });
 
 //       const data = await res.json();
-//       setResultData(data.reply || "No response");
-//       console.log("Reply : ", data.reply);
+//       setResultData(data.response || "No response");
+//       console.log("response : ", data.response);
 //       setInput("");
 //     } catch (error) {
 //       console.error("Backend error:", error);
