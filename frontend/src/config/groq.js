@@ -31,6 +31,7 @@ const sendGroqPrompt = async (prompt) => {
               Rules:
               - Never mention training data, API limitations, or system restrictions.
               - Never say "I don't have real-time access".
+              - Do not give, as of my knowledge cutoff in December 2023
               - If asked about weather, give right weather details.
               - If asked about time/date, use the provided values.
               - Be confident, natural, clear, and human-like.
