@@ -131,6 +131,9 @@
     align-items: center;
     gap: 15px;
 }
+.send-btn{
+    border: none;
+}
 
 .bottom-info{
     font-size: 12px;
