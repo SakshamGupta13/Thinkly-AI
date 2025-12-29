@@ -1,7 +1,7 @@
 .main{
     flex: 1;
-    height: 100vh;
-    /* overflow: hidden; */
+    min-height: 100dvh;
+    overflow: hidden;
     /* padding-bottom: 15vh; */
     position: relative;
     /* background: linear-gradient(135deg, #141e30, #243b55, #141e30); */
@@ -39,6 +39,7 @@
 .main-container{
     max-width: 900px;
     margin: auto;
+    padding-bottom: 140px;
 }
 
 .main .greet{
@@ -92,12 +93,13 @@
 }
 
 .main-bottom{
-    position: absolute;
+    position: sticky;
     bottom: 0;
     width: 100%;
     max-width: 900px;
     padding: 0 20px;
     margin: auto;
+    padding-bottom: env(safe-area-inset-bottom);   /* Add safe-area support for iOS */
 }
 
 .search-box{
@@ -225,6 +227,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   .sidebar{
     display: none;
@@ -232,6 +235,8 @@
 
   .main-container {
     flex: 1;
+    overflow-y: auto;
+    padding-bottom: 130px;
   }
 
   .main .greet {
@@ -240,16 +245,17 @@
 
   .result {
     max-height: none;
-    overflow-y: auto;
-    padding-bottom: 120px;
+    overflow: visible;
   }
 
   .main-bottom {
     position: fixed;
+    background: #a4bae5;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 10px;
+    z-index: 100;
   }
 
   .search-box {
