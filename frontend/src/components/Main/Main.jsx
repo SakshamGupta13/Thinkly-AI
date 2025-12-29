@@ -23,8 +23,8 @@ const Main = () => {
         {!showResult
         ?<>
           <div className="greet">
-            <p><span>Hello, Saksham.</span></p>
-            <p>How can I help you?</p>
+            <p><span>Hello and Welcome!</span></p>
+            <p>How can I assist you today?</p>
           </div>
 
           <div className="cards">
