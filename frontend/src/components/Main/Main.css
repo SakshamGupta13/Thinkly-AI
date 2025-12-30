@@ -1,6 +1,7 @@
 .main{
     flex: 1;
     min-height: 100dvh;
+    min-width: 0;
     overflow: hidden;
     /* padding-bottom: 15vh; */
     position: relative;
